@@ -14,6 +14,11 @@ module "example" {
   suffix = [ var.suffix ]
 }
 
+resource "azurerm_resource_group" "example" {
+  name     = module.naming.resource_group.name
+  location = "West Europe"
+}
+
 output "test" {
-  value = module.example
+  value = azurerm_resource_group.example.name
 }
