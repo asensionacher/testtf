@@ -8,7 +8,13 @@ variable "prefix" {
   default     = "default"
 }
 
-module "example" {
+terraform {
+  backend "azurerm" {
+}
+}
+
+
+module "naming" {
   source  = "registry.local:9080/privateprivate/naming/azurerm"
   version = "0.4.2"
   suffix = [ var.suffix ]
