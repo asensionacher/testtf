@@ -9,8 +9,7 @@ variable "prefix" {
 }
 
 terraform {
-  backend "azurerm" {
-}
+  backend "azurerm" {}
 }
 
 
