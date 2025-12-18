@@ -12,6 +12,21 @@ terraform {
   backend "azurerm" {}
 }
 
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "http://registry.local:9080/privateprivate/azurerm"
+      version = "=4.57.0"
+    }
+  }
+}
+
+# Configure the Microsoft Azure Provider
+provider "azurerm" {
+  resource_provider_registrations = "none" # This is only required when the User, Service Principal, or Identity running Terraform lacks the permissions to register Azure Resource Providers.
+  features {}
+}
+
 
 module "naming" {
   source  = "registry.local:9080/privateprivate/naming/azurerm"
