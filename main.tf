@@ -15,7 +15,7 @@ terraform {
 terraform {
   required_providers {
     azurerm = {
-      source  = "http://registry.local:9080/privateprivate/azurerm"
+      source  = "registry.local:9080/privateprivate/azurerm"
       version = "4.57.0"
     }
   }
