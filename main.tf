@@ -11,7 +11,7 @@ variable "prefix" {
 terraform {
   required_providers {
     azurerm = {
-      source  = "registry.local:9080/privateprivate/azurerm"
+      source  = "registry.local/privateprivate/azurerm"
       version = "4.57.0"
     }
   }
