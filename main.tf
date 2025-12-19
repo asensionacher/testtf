@@ -27,6 +27,7 @@ provider "azurerm" {
 
 
 module "naming" {
+  count = 100
   source  = "registry.local:9080/privateprivate/naming/azurerm"
   version = "0.4.2"
   suffix = [ var.suffix ]
