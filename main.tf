@@ -27,17 +27,17 @@ provider "azurerm" {
 
 
 module "naming" {
-  count = 100
   source  = "registry.local:9080/privateprivate/naming/azurerm"
   version = "0.4.2"
   suffix = [ var.suffix ]
 }
 
 resource "azurerm_resource_group" "example" {
+  count = 100
   name     = module.naming.resource_group.name
   location = "West Europe"
 }
 
 output "test" {
-  value = azurerm_resource_group.example.name
+  value = azurerm_resource_group.example[0].name
 }
