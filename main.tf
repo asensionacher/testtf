@@ -9,10 +9,6 @@ variable "prefix" {
 }
 
 terraform {
-  backend "azurerm" {}
-}
-
-terraform {
   required_providers {
     azurerm = {
       source  = "registry.local:9080/privateprivate/azurerm"
@@ -32,12 +28,6 @@ module "naming" {
   suffix = [ var.suffix ]
 }
 
-resource "azurerm_resource_group" "example" {
-  count = 100
-  name     = module.naming.resource_group.name
-  location = "West Europe"
-}
-
 output "test" {
-  value = azurerm_resource_group.example[0].name
+  value = module.naming.resource_group.name
 }
