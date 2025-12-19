@@ -22,8 +22,7 @@ terraform {
 }
 
 provider "azurerm" {
-  # Provider configuration
-  # Add your provider settings here
+  features {}
 }
 
 
