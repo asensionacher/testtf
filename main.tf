@@ -11,7 +11,7 @@ variable "prefix" {
 terraform {
   required_providers {
     azurerm = {
-      source  = "registry.local/privateprivate/azurerm"
+      source  = "hashicorp/azurerm"
       version = "4.57.0"
     }
   }
@@ -23,7 +23,7 @@ provider "azurerm" {
 
 
 module "naming" {
-  source  = "registry.local/privateprivate/naming/azurerm"
+  source  = "Azure/naming/azurerm"
   version = "0.4.2"
   suffix = [ var.suffix ]
 }
