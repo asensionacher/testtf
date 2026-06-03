@@ -17,6 +17,10 @@ terraform {
   }
 }
 
+terraform {
+  backend "http" {}
+}
+
 provider "azurerm" {
   features {}
 }
