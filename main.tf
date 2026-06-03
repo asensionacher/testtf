@@ -18,7 +18,7 @@ terraform {
 }
 
 terraform {
-  backend "http" {}
+  backend "azurerm" {}
 }
 
 provider "azurerm" {
