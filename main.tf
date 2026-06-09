@@ -15,13 +15,7 @@ terraform {
   # Configure the HTTP backend to use our custom API for state management.
   # Credentials are passed via environment variables — never hardcode them in .tf files.
   # Set TF_HTTP_USERNAME and TF_HTTP_PASSWORD in your shell before running terraform/tofu.
-  backend "http" {
-    address        = "https://tf.registry.lan/api/tfstate/naming.tfstate"
-    lock_address   = "https://tf.registry.lan/api/tfstate/naming.tfstate"
-    unlock_address = "https://tf.registry.lan/api/tfstate/naming.tfstate"
-    lock_method    = "LOCK"
-    unlock_method  = "UNLOCK"
-  }
+  backend "http" {}
 }
 
 variable "suffix" {
