@@ -2,6 +2,10 @@ terraform {
   required_version = ">= 1.13.0"
 
   required_providers {
+    time = {
+      source  = "api.registry.lan/my-org/time"
+      version = "0.14.0" # Use the latest stable version
+    }
     random = {
       source  = "api.registry.lan/my-org/random" # The provider we just created
       version = "3.9.0"
@@ -30,6 +34,9 @@ variable "prefix" {
   default     = "default"
 }
 
+resource "time_sleep" "wait_60_seconds" {
+  create_duration = "60s"
+}
 
 module "naming" {
   source  = "api.registry.lan/my-org/naming/azure"
@@ -37,6 +44,8 @@ module "naming" {
 
   # Module configuration
   # Add your module inputs here
+
+  depends_on = [time_sleep.wait_60_seconds]
   suffix = ["test"]
 }
 module "naming1" {
@@ -45,6 +54,7 @@ module "naming1" {
 
   # Module configuration
   # Add your module inputs here
+  depends_on = [time_sleep.wait_60_seconds]
   suffix = ["test"]
 }
 module "naming2" {
@@ -53,6 +63,7 @@ module "naming2" {
 
   # Module configuration
   # Add your module inputs here
+  depends_on = [time_sleep.wait_60_seconds]
   suffix = ["test"]
 }
 module "naming3" {
@@ -61,6 +72,7 @@ module "naming3" {
 
   # Module configuration
   # Add your module inputs here
+  depends_on = [time_sleep.wait_60_seconds]
   suffix = ["test"]
 }
 module "naming4" {
@@ -69,8 +81,10 @@ module "naming4" {
 
   # Module configuration
   # Add your module inputs here
+  depends_on = [time_sleep.wait_60_seconds]
   suffix = ["test"]
 }
+
 output "analysis_services_server" {
   value = module.naming.analysis_services_server
 }
